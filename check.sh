@@ -1,11 +1,10 @@
 #!/usr/bin/env bash
 
-set -e
 
 OBJECTS="$(cat objects.list) "
 
 for O in $OBJECTS ; do
-    echo -n "$O "
+    printf "%-110s " $O 
     kubectl get -o name $O 2>/dev/null 1>/dev/null
     if [ $? == 1 ]; then
         echo " MISSSING!"
