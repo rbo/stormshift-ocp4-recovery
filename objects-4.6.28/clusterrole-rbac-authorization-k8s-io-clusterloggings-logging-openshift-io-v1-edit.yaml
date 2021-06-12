@@ -1,0 +1,17 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  labels:
+    olm.opgroup.permissions/aggregate-to-398cc1f7861443fe-edit: "true"
+    rbac.authorization.k8s.io/aggregate-to-edit: "true"
+  name: clusterloggings.logging.openshift.io-v1-edit
+rules:
+  - apiGroups:
+      - logging.openshift.io
+    resources:
+      - clusterloggings
+    verbs:
+      - create
+      - update
+      - patch
+      - delete

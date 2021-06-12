@@ -1,0 +1,71 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: system:openshift:controller:machine-approver
+rules:
+  - apiGroups:
+      - certificates.k8s.io
+    resources:
+      - certificatesigningrequests
+    verbs:
+      - get
+      - list
+      - watch
+  - apiGroups:
+      - certificates.k8s.io
+    resources:
+      - certificatesigningrequests/approval
+    verbs:
+      - update
+  - apiGroups:
+      - certificates.k8s.io
+    resourceNames:
+      - kubernetes.io/kube-apiserver-client-kubelet
+      - kubernetes.io/kubelet-serving
+    resources:
+      - signers
+    verbs:
+      - approve
+  - apiGroups:
+      - machine.openshift.io
+    resources:
+      - machines
+    verbs:
+      - get
+      - list
+      - watch
+  - apiGroups:
+      - ""
+    resources:
+      - nodes
+    verbs:
+      - get
+  - apiGroups:
+      - authentication.k8s.io
+    resources:
+      - tokenreviews
+    verbs:
+      - create
+  - apiGroups:
+      - authorization.k8s.io
+    resources:
+      - subjectaccessreviews
+    verbs:
+      - create
+  - apiGroups:
+      - config.openshift.io
+    resources:
+      - clusteroperators
+    verbs:
+      - get
+      - create
+      - list
+      - watch
+  - apiGroups:
+      - config.openshift.io
+    resourceNames:
+      - machine-approver
+    resources:
+      - clusteroperators/status
+    verbs:
+      - update

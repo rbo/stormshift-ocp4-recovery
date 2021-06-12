@@ -1,0 +1,43 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: system:openshift:controller:check-endpoints
+rules:
+  - apiGroups:
+      - controlplane.operator.openshift.io
+    resources:
+      - podnetworkconnectivitychecks
+    verbs:
+      - get
+      - list
+      - watch
+  - apiGroups:
+      - controlplane.operator.openshift.io
+    resources:
+      - podnetworkconnectivitychecks/status
+    verbs:
+      - get
+      - list
+      - patch
+      - update
+      - watch
+  - apiGroups:
+      - ""
+    resources:
+      - pods
+      - secrets
+    verbs:
+      - get
+      - list
+      - watch
+  - apiGroups:
+      - ""
+    resources:
+      - events
+    verbs:
+      - get
+      - list
+      - watch
+      - create
+      - update
+      - patch

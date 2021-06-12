@@ -1,0 +1,19 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: cluster-samples-operator
+rules:
+  - apiGroups:
+      - samples.operator.openshift.io
+    resources:
+      - configs
+      - configs/status
+    verbs:
+      - '*'
+  - apiGroups:
+      - config.openshift.io
+    resources:
+      - clusteroperators
+      - clusteroperators/status
+    verbs:
+      - '*'

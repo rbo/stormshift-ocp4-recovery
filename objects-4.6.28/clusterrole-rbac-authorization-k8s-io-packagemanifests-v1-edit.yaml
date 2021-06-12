@@ -1,0 +1,17 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  labels:
+    olm.opgroup.permissions/aggregate-to-4bca9f23e412d79d-edit: "true"
+    rbac.authorization.k8s.io/aggregate-to-edit: "true"
+  name: packagemanifests-v1-edit
+rules:
+  - apiGroups:
+      - packages.operators.coreos.com
+    resources:
+      - packagemanifests
+    verbs:
+      - create
+      - update
+      - patch
+      - delete

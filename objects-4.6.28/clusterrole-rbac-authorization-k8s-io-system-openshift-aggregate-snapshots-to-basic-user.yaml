@@ -1,0 +1,17 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  labels:
+    addonmanager.kubernetes.io/mode: Reconcile
+    authorization.openshift.io/aggregate-to-basic-user: "true"
+    kubernetes.io/cluster-service: "true"
+  name: system:openshift:aggregate-snapshots-to-basic-user
+rules:
+  - apiGroups:
+      - snapshot.storage.k8s.io
+    resources:
+      - volumesnapshotclasses
+    verbs:
+      - get
+      - list
+      - watch

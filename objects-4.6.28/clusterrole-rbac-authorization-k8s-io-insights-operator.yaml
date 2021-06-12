@@ -1,0 +1,36 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: insights-operator
+rules:
+  - apiGroups:
+      - config.openshift.io
+    resourceNames:
+      - insights
+    resources:
+      - clusteroperators
+    verbs:
+      - get
+      - watch
+  - apiGroups:
+      - config.openshift.io
+    resources:
+      - clusteroperators
+    verbs:
+      - create
+  - apiGroups:
+      - config.openshift.io
+    resourceNames:
+      - insights
+    resources:
+      - clusteroperators/status
+    verbs:
+      - get
+      - update
+      - patch
+  - apiGroups:
+      - ""
+    resources:
+      - namespaces
+    verbs:
+      - get

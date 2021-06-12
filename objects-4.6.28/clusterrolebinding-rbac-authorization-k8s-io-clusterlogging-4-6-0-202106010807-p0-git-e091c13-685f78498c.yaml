@@ -1,0 +1,17 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  labels:
+    olm.owner: clusterlogging.4.6.0-202106010807.p0.git.e091c13
+    olm.owner.kind: ClusterServiceVersion
+    olm.owner.namespace: openshift-logging
+    operators.coreos.com/cluster-logging.openshift-logging: ""
+  name: clusterlogging.4.6.0-202106010807.p0.git.e091c13-685f78498c
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: clusterlogging.4.6.0-202106010807.p0.git.e091c13-685f78498c
+subjects:
+  - kind: ServiceAccount
+    name: cluster-logging-operator
+    namespace: openshift-logging

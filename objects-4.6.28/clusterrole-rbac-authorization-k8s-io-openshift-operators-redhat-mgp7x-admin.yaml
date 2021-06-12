@@ -1,0 +1,27 @@
+aggregationRule:
+  clusterRoleSelectors:
+    - matchLabels:
+        olm.opgroup.permissions/aggregate-to-e43efcaa45c9f8d0-admin: "true"
+    - matchLabels:
+        olm.opgroup.permissions/aggregate-to-9337dac30a6def29-admin: "true"
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  labels:
+    olm.owner: openshift-operators-redhat-mgp7x
+    olm.owner.kind: OperatorGroup
+    olm.owner.namespace: openshift-operators-redhat
+  name: openshift-operators-redhat-mgp7x-admin
+rules:
+  - apiGroups:
+      - logging.openshift.io
+    resources:
+      - elasticsearches
+    verbs:
+      - '*'
+  - apiGroups:
+      - logging.openshift.io
+    resources:
+      - kibanas
+    verbs:
+      - '*'

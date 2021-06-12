@@ -1,0 +1,14 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  annotations:
+    imageregistry.operator.openshift.io/checksum: sha256:74248883530fac21ef97d7c550c5f486050f236de11e2021e1f5961957eb75bc
+  name: registry-registry-role
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: system:registry
+subjects:
+  - kind: ServiceAccount
+    name: registry
+    namespace: openshift-image-registry

@@ -1,0 +1,17 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  labels:
+    olm.owner: elasticsearch-operator.4.6.0-202106010807.p0.git.c07c7ab
+    olm.owner.kind: ClusterServiceVersion
+    olm.owner.namespace: openshift-operators-redhat
+    operators.coreos.com/elasticsearch-operator.openshift-operators-redhat: ""
+  name: elasticsearch-operator.4.6.0-202106010807.p0.git.c07c7-bcffc569
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: elasticsearch-operator.4.6.0-202106010807.p0.git.c07c7-bcffc569
+subjects:
+  - kind: ServiceAccount
+    name: elasticsearch-operator
+    namespace: openshift-operators-redhat

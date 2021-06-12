@@ -1,0 +1,54 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: openshift-ingress-router
+rules:
+  - apiGroups:
+      - ""
+    resources:
+      - endpoints
+      - namespaces
+      - services
+    verbs:
+      - list
+      - watch
+  - apiGroups:
+      - authentication.k8s.io
+    resources:
+      - tokenreviews
+    verbs:
+      - create
+  - apiGroups:
+      - authorization.k8s.io
+    resources:
+      - subjectaccessreviews
+    verbs:
+      - create
+  - apiGroups:
+      - route.openshift.io
+    resources:
+      - routes
+    verbs:
+      - list
+      - watch
+  - apiGroups:
+      - route.openshift.io
+    resources:
+      - routes/status
+    verbs:
+      - update
+  - apiGroups:
+      - security.openshift.io
+    resourceNames:
+      - hostnetwork
+    resources:
+      - securitycontextconstraints
+    verbs:
+      - use
+  - apiGroups:
+      - discovery.k8s.io
+    resources:
+      - endpointslices
+    verbs:
+      - list
+      - watch

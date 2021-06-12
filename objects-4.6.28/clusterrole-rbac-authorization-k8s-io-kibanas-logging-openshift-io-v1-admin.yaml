@@ -1,0 +1,14 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  labels:
+    olm.opgroup.permissions/aggregate-to-9337dac30a6def29-admin: "true"
+    rbac.authorization.k8s.io/aggregate-to-admin: "true"
+  name: kibanas.logging.openshift.io-v1-admin
+rules:
+  - apiGroups:
+      - logging.openshift.io
+    resources:
+      - kibanas
+    verbs:
+      - '*'

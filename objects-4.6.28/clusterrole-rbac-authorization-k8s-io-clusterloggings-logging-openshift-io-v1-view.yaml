@@ -1,0 +1,16 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  labels:
+    olm.opgroup.permissions/aggregate-to-398cc1f7861443fe-view: "true"
+    rbac.authorization.k8s.io/aggregate-to-view: "true"
+  name: clusterloggings.logging.openshift.io-v1-view
+rules:
+  - apiGroups:
+      - logging.openshift.io
+    resources:
+      - clusterloggings
+    verbs:
+      - get
+      - list
+      - watch
