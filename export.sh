@@ -2,10 +2,9 @@
 
 set -e
 
-OBJECTS="$(cat objects.list) "
+for O in $(cat $1 ) ; do
+    FILENAME="objects/${O//[\/\.:]/-}.yaml"
 
-for O in $OBJECTS ; do
-    FILENAME=${O//[\/\.:]/-}.yaml
     if [ -f $FILENAME ]; then
         echo "Skip $FILENAME"
         continue;
