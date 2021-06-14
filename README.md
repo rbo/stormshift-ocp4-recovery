@@ -17,14 +17,21 @@ time kubectl-dev_tool audit -f /media/sda/audit.20210611.log --verb delete | tee
 
 ```
 
-# ToDo
+## CR & CRB - export, check & apply missing
 
- - [ ] Check OpenShift Logging version demo2 vs ocp4
-
-# Notes
-
-
+```
+# Export
 oc get -o name clusterrole,clusterrolebindings | sort  > with-logging-4.6.28.objects 
+time ./export.sh with-logging-4.6.28.objects
+
+# Check & filter
+time ./check.sh with-logging-4.6.28.objects | tee -a ocp4-check-2021-06-12-with-logging.objects
+grep MISSSING ocp4-check-2021-06-12-with-logging.objects |awk '{ print  }' | sort > missing.objects
 
 
+# Apply missing
+time ./apply -f missing.objects | tee -a missing.objects.log
+
+
+```
 
