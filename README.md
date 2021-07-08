@@ -1,5 +1,7 @@
 # stormshift-ocp4-recovery
 
+https://bugzilla.redhat.com/show_bug.cgi?id=1970910
+
 ## Install logforwarding into file
 
 <https://examples.openshift.pub/cluster-configuration/logging/forwarding-demo/>
